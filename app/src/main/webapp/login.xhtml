@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css" />
+</h:head>
+
+<h:body>
+    <div id="page">
+        <h:form>
+            <h:inputText validatorMessage="Invalid username format" value="#{loginRequest.username}"/>
+            <br/>
+            <br/>
+                <h:inputSecret value="#{loginRequest.password}"/>
+            <br/>
+            <br/>
+
+            <h:commandButton value="Login" action="#{loginController.login}"/>
+
+        </h:form>
+<h:form>
+    <h:commandButton value="Register" action="#{loginController.register}"/>
+</h:form>
+    </div>
+
+</h:body>
+</html>

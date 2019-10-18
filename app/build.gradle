@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+
+war{
+    archiveFileName = 'app.war'
+}
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'javax:javaee-api:8.0'
+    testImplementation 'junit:junit:4.12'
+}

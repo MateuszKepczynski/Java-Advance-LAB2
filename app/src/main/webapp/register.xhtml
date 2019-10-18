@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css" />
+</h:head>
+
+<h:body>
+    <div id="page">
+        <h:form>
+            <h5>Name:
+                    <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                        <h:inputText validatorMessage="Invalid name format" value="#{registrationRequest.name}"/>
+                    </f:validateRegex>
+
+            </h5>
+
+            <br></br>
+
+            <h5>Lastname:
+                    <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                        <h:inputText validatorMessage="Invalid lastname format" value="#{registrationRequest.lastName}"/>
+                    </f:validateRegex>
+            </h5>
+
+            <br></br>
+
+            <h5>Username:
+                <f:validateRegex pattern="((?=.*[a-z]).{3,30})">
+                    <h:inputText validatorMessage="Invalid username format" value="#{registrationRequest.username}"/>
+                </f:validateRegex>
+            </h5>
+
+
+
+            <br></br>
+
+            <h5>E-mail:
+                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,30})$">
+                    <h:inputText requiredMessage="Please enter your email address." validatorMessage="Invalid email format" value="#{registrationRequest.userEmail}"/>
+                </f:validateRegex>
+            </h5>
+
+            <br></br>
+
+            <h5>Passowrd:
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
+                        <h:inputSecret requiredMessage="Please enter your password."
+                                       validatorMessage="Invalid password format" value="#{registrationRequest.password}"/>
+                    </f:validateRegex>
+            </h5>
+
+            <br></br>
+
+            <h5>Repete password:
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
+                        <h:inputSecret validatorMessage="Password don't match!" value="#{registrationRequest.secPassword}"/>
+                    </f:validateRegex>
+            </h5>
+
+            <br></br>
+
+            <h5>Birthdate:
+                <h:inputText value="#{registrationRequest.dateOfBirth}"/>
+            </h5>
+
+            <h:commandButton value="Registration" action="#{registerController.register}"/>
+
+        </h:form>
+
+    </div>
+
+</h:body>
+</html>
