@@ -19,7 +19,7 @@
     </context-param>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>/register.xhtml.xml</param-value>
+        <param-value>/WEB-INF/face-config.xml</param-value>
     </context-param>
 
     <welcome-file-list>

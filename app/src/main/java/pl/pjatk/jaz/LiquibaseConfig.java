@@ -7,10 +7,8 @@ import liquibase.integration.cdi.annotations.LiquibaseType;
 import liquibase.resource.ClassLoaderResourceAccessor;
 import liquibase.resource.ResourceAccessor;
 
-import javax.annotation.Resource; //?
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 

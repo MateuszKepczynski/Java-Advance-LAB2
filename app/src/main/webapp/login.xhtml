@@ -16,13 +16,13 @@
     <div id="page">
         <h:form>
             <div style="text-align: center;">
-               Login: <h:inputText validatorMessage="Invalid username format" value="#{loginRequest.username}"/>
+               <h:inputText title="Login" validatorMessage="Invalid username format" value="#{loginRequest.username}"/>
                 <br/>
                 <br/>
-                Password: <h:inputSecret value="#{loginRequest.password}"/>
+                <h:inputSecret value="#{loginRequest.password}"/>
                 <br/>
                 <br/>
-                <h:commandButton value="Login" action="#{loginController.login}"/>
+                <h:commandButton value="Login" action="#{loginController.validateUsernamePassword}"/>
                 <h:commandButton value="Register" action="#{loginController.register}"/>
             </div>
         </h:form>

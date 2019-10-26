@@ -3,15 +3,18 @@ package pl.pjatk.jaz.webapp;
 import pl.pjatk.jaz.UserMapBean;
 import pl.pjatk.jaz.login.LoginRequest;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serializable;
 
 @Named
-@RequestScoped
+@ApplicationScoped
 public class LoginController implements Serializable
 {
     FacesContext context = FacesContext.getCurrentInstance();
@@ -47,5 +50,43 @@ public class LoginController implements Serializable
         {
             e.printStackTrace();
         }
+    }
+
+
+    public String validateUsernamePassword()
+    {
+        boolean valid = false;
+        String pass;
+
+        userMapBean.add(admin);
+        if(userMapBean.ifThereIs(loginRequest.getUsername()))
+        {
+            if(userMapBean.doesPasswordMatch(loginRequest.getUsername(), loginRequest.getPassword()))
+            {
+                valid = true;
+            }
+        }
+
+        if (valid)
+        {
+            HttpSession session = SessionUtils.getSession();
+            session.setAttribute("username", loginRequest.getUsername());
+            pass= "true";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Incorrect Username or Passowrd",
+                            "Please enter correct username and Password"));
+            pass = "false";
+        }
+        return pass;
+    }
+
+    //logout event, invalidate session
+    public String logout() {
+        HttpSession session = SessionUtils.getSession();
+        session.invalidate();
+        return "login";
     }
 }
