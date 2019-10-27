@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -22,11 +23,14 @@ public class RegisterController
     @Inject
     UserMapBean userMapBean;
 
+
+
     public void register()
     {
         User user = new User(registrationRequest.getName(),registrationRequest.getLastName(),registrationRequest.getUsername()
                 ,registrationRequest.getPassword(),registrationRequest.getSecPassword(),registrationRequest.getUserEmail(),registrationRequest.getDateOfBirth());
         userMapBean.add(user);
+
         try
         {
             context.getExternalContext().redirect("login.xhtml");

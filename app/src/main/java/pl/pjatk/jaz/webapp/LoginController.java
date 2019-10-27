@@ -3,6 +3,7 @@ package pl.pjatk.jaz.webapp;
 import pl.pjatk.jaz.UserMapBean;
 import pl.pjatk.jaz.login.LoginRequest;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 @Named
+@ManagedBean
 @ApplicationScoped
 public class LoginController implements Serializable
 {
@@ -40,16 +42,11 @@ public class LoginController implements Serializable
         }
     }
 
-    public void register()
+    public String register()
     {
-        try
-        {
-            context.getExternalContext().redirect("register.xhtml");
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+            HttpSession session = SessionUtils.getSession();
+            session.setAttribute("username", "creatingUser");
+            return "true";
     }
 
 
@@ -87,6 +84,6 @@ public class LoginController implements Serializable
     public String logout() {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
-        return "login";
+        return "true";
     }
 }

@@ -3,77 +3,81 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 >
 
 <h:head>
-    <h:outputStylesheet name="main.css" library="css" />
+    <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
 
 <h:body>
-    <h:body style="background-image: url(background.jpg)" ></h:body>
+    <h:body style="background-image: url(background2.jpg); background-position: top; background-repeat: repeat;  background-size: auto"></h:body>
     <div id="page">
         <h:form>
-            <h5>Name:
-                    <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
-                        <h:inputText validatorMessage="Invalid name format" value="#{registrationRequest.name}"/>
-                    </f:validateRegex>
-
-            </h5>
-
-            <br></br>
-
-            <h5>Lastname:
-                    <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
-                        <h:inputText validatorMessage="Invalid lastname format" value="#{registrationRequest.lastName}"/>
-                    </f:validateRegex>
-            </h5>
-
-            <br></br>
-
-            <h5>Username:
+            <div style="left: 0; position: absolute; text-align: center; top: 5%; width: 100%;">
+                <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                    <h:inputText
+                            style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                            pt:placeholder="Name" validatorMessage="Invalid name format"
+                            value="#{registrationRequest.name}"/>
+                </f:validateRegex>
+                <br/>
+                <br/>
+                <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                    <h:inputText
+                            style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                            pt:placeholder="Last name" validatorMessage="Invalid lastname format"
+                            value="#{registrationRequest.lastName}"/>
+                </f:validateRegex>
+                <br/>
+                <br/>
                 <f:validateRegex pattern="((?=.*[a-z]).{3,30})">
-                    <h:inputText validatorMessage="Invalid username format" value="#{registrationRequest.username}"/>
+                    <h:inputText
+                            style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                            pt:placeholder="Username" validatorMessage="Invalid username format"
+                            value="#{registrationRequest.username}"/>
                 </f:validateRegex>
-            </h5>
-
-
-
-            <br></br>
-
-            <h5>E-mail:
-                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,30})$">
-                    <h:inputText requiredMessage="Please enter your email address." validatorMessage="Invalid email format" value="#{registrationRequest.userEmail}"/>
+                <br/>
+                <br/>
+                <f:validateRegex
+                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,30})$">
+                    <h:inputText
+                            style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                            pt:placeholder="E-mail" requiredMessage="Please enter your email address."
+                            validatorMessage="Invalid email format" value="#{registrationRequest.userEmail}"/>
                 </f:validateRegex>
-            </h5>
-
-            <br></br>
-
-            <h5>Passowrd:
-                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
-                        <h:inputSecret requiredMessage="Please enter your password."
-                                       validatorMessage="Invalid password format" value="#{registrationRequest.password}"/>
-                    </f:validateRegex>
-            </h5>
-
-            <br></br>
-
-            <h5>Repete password:
-                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
-                        <h:inputSecret validatorMessage="Password don't match!" value="#{registrationRequest.secPassword}"/>
-                    </f:validateRegex>
-            </h5>
-
-            <br></br>
-
-            <h5>Birthdate:
-                <h:inputText value="#{registrationRequest.dateOfBirth}"/>
-            </h5>
-
-            <h:commandButton value="Registration" action="#{registerController.register}"/>
-
+                <br/>
+                <br/>
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
+                    <h:inputSecret
+                            style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                            pt:placeholder="Password"
+                            requiredMessage="Please enter your password."
+                            validatorMessage="Invalid password format" value="#{registrationRequest.password}"/>
+                </f:validateRegex>
+                <br/>
+                <br/>
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
+                    <h:inputSecret
+                            style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                            pt:placeholder="Re-password"
+                            validatorMessage="Password don't match!" value="#{registrationRequest.secPassword}"/>
+                </f:validateRegex>
+                <br/>
+                <br/>
+                <h:inputText style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
+                             pt:placeholder="BirthDay"
+                             value="#{registrationRequest.dateOfBirth}"/>
+                <br/>
+                <br/>
+                <h:commandButton style="display: inline-block; border-radius: 12px; background-color: #4a4a4a; border: none; color: #FFFFFF; text-align: center; font-size: 17px; padding: 10px 15px;
+            width: auto;
+            height: auto;  transition: all 0.5s; cursor: pointer; margin: 4px 2px;" value="Registration"
+                                 action="#{registerController.register}"/>
+            </div>
         </h:form>
-
     </div>
 
 </h:body>
