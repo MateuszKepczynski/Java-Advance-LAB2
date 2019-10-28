@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("hello")
+@WebServlet("hello") //test
 public class AverageServlet extends HttpServlet
 {
     @Override
