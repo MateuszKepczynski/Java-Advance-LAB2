@@ -2,6 +2,7 @@ package pl.pjatk.jaz.webapp;
 
 import pl.pjatk.jaz.UserMapBean;
 import pl.pjatk.jaz.login.LoginRequest;
+import pl.pjatk.jaz.registration.HashPassword;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
@@ -55,7 +56,13 @@ public class LoginController implements Serializable
         boolean valid = false;
         String pass;
 
+        UserToDatabase userToDatabase = new UserToDatabase();
+
+        userToDatabase.getUsername("kepes12");
+
         userMapBean.add(admin);
+
+
         if(userMapBean.ifThereIs(loginRequest.getUsername()))
         {
             if(userMapBean.doesPasswordMatch(loginRequest.getUsername(), loginRequest.getPassword()))
@@ -63,6 +70,8 @@ public class LoginController implements Serializable
                 valid = true;
             }
         }
+
+
 
         if (valid)
         {
@@ -81,7 +90,8 @@ public class LoginController implements Serializable
     }
 
     //logout event, invalidate session
-    public String logout() {
+    public String logout()
+    {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
         return "true";

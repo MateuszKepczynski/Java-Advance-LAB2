@@ -1,5 +1,6 @@
 package pl.pjatk.jaz;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.pjatk.jaz.webapp.User;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -27,6 +28,7 @@ public class UserMapBean
 
     public boolean doesPasswordMatch(String username, String password) //checking that password match
     {
-        return  password.equals(userHashMap.get(username).getPassword());
+        var passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(password, userHashMap.get(username).getPassword());
     }
 }

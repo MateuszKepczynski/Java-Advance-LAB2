@@ -1,13 +1,13 @@
 package pl.pjatk.jaz.webapp;
 
 import pl.pjatk.jaz.UserMapBean;
+import pl.pjatk.jaz.registration.HashPassword;
 import pl.pjatk.jaz.registration.RegistrationRequest;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -23,13 +23,21 @@ public class RegisterController
     @Inject
     UserMapBean userMapBean;
 
-
+    HashPassword hashPassword = new HashPassword();
 
     public void register()
     {
-        User user = new User(registrationRequest.getName(),registrationRequest.getLastName(),registrationRequest.getUsername()
-                ,registrationRequest.getPassword(),registrationRequest.getSecPassword(),registrationRequest.getUserEmail(),registrationRequest.getDateOfBirth());
-        userMapBean.add(user);
+        String hashedPassword;
+        hashedPassword = hashPassword.hash(registrationRequest.getPassword());
+
+        User user = new User(registrationRequest.getName(),registrationRequest.getLastName(),
+                registrationRequest.getUsername(),hashedPassword,
+                registrationRequest.getSecPassword(),registrationRequest.getUserEmail(),
+                registrationRequest.getDateOfBirth());userMapBean.add(user);
+
+        UserToDatabase userToDatabase = new UserToDatabase();
+
+        userToDatabase.addUserToDb(user);
 
         try
         {

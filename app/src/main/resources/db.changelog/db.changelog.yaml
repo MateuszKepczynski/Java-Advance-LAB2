@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 20191021_init
-      author: Paweł Janowiak
+      author: Mateusz Kępczyński
       sqlFile:
         relativeToChangelogFile: true
         splitStatements: false
