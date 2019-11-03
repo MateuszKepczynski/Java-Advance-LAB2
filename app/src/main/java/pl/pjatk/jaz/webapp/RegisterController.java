@@ -26,7 +26,7 @@ public class RegisterController
 
     HashPassword hashPassword = new HashPassword();
 
-    public boolean register()
+    public boolean register() //
     {
         String hashedPassword;
         hashedPassword = hashPassword.hash(registrationRequest.getPassword()); //hashing password
