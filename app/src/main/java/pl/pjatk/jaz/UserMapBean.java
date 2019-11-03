@@ -23,12 +23,12 @@ public class UserMapBean
 
     public boolean ifThereIs(String username) //checking if there's key using "String username"
     {
-        return username.equals(userHashMap.get(username).getUsername());
+        return username.equals(userHashMap.get(username).getUsername()); // checking if there's user with nickname given by user
     }
 
-    public boolean doesPasswordMatch(String username, String password) //checking that password match
+    public boolean doesPasswordMatch(String username, String password) //checking that password match to each other
     {
         var passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.matches(password, userHashMap.get(username).getPassword());
+        return passwordEncoder.matches(password, userHashMap.get(username).getPassword()); // matches password
     }
 }

@@ -28,8 +28,9 @@ public class LoginController implements Serializable
     @Inject
     UserMapBean userMapBean;
 
-    User admin = new User("","admin","admin","admin","","","");
+    //User admin = new User("","admin","admin","admin","","","");
 
+    /*
     public void login()
     {
         userMapBean.add(admin);
@@ -42,7 +43,7 @@ public class LoginController implements Serializable
             }
         }
     }
-
+    */
     public String register()
     {
             HttpSession session = SessionUtils.getSession();
@@ -56,12 +57,11 @@ public class LoginController implements Serializable
         boolean valid = false;
         String pass;
 
-        UserToDatabase userToDatabase = new UserToDatabase();
+       // UserToDatabase userToDatabase = new UserToDatabase();
 
-        userToDatabase.getUsername("kepes12");
+        //userToDatabase.getUsername(loginRequest.getUsername());
 
-        userMapBean.add(admin);
-
+       // userMapBean.add(admin);
 
         if(userMapBean.ifThereIs(loginRequest.getUsername()))
         {
@@ -70,8 +70,6 @@ public class LoginController implements Serializable
                 valid = true;
             }
         }
-
-
 
         if (valid)
         {
@@ -86,14 +84,14 @@ public class LoginController implements Serializable
                             "Please enter correct username and Password"));
             pass = "false";
         }
-        return pass;
+        return pass; //returning "pass" for future redirection based in face-config.xml
     }
 
     //logout event, invalidate session
     public String logout()
     {
         HttpSession session = SessionUtils.getSession();
-        session.invalidate();
-        return "true";
+        session.invalidate(); // invalidating session for logout method
+        return "true"; // returning true for future redirection based in face-config.xml
     }
 }
