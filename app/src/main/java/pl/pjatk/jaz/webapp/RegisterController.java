@@ -35,7 +35,7 @@ public class RegisterController
 
     //    userToDatabase.addUserToDb(registrationRequest.getName(),registrationRequest.getLastName(),registrationRequest.getUsername(),
         //          hashedPassword,registrationRequest.getUserEmail(),registrationRequest.getDateOfBirth()); // adding parameters from user to db
-        if (registrationRequest.getSecPassword().equals(registrationRequest.getPassword())) {
+        if (registrationRequest.getPassword().equals(registrationRequest.getSecPassword())) {
             User user = new User(registrationRequest.getName(), registrationRequest.getLastName(),
                     registrationRequest.getUsername(), hashedPassword,
                     registrationRequest.getSecPassword(), registrationRequest.getUserEmail(),
