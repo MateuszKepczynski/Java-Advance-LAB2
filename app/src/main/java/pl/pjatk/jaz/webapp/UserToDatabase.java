@@ -68,6 +68,10 @@ public class UserToDatabase
         {
             return true;
         }
+        catch (NoResultException e)
+        {
+            return true;
+        }
     }
 
     @Transactional
@@ -80,6 +84,10 @@ public class UserToDatabase
             return false;
         }
         catch (RollbackException e)
+        {
+            return true;
+        }
+        catch (NoResultException e)
         {
             return true;
         }
