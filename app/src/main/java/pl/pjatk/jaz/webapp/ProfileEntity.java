@@ -17,8 +17,8 @@ public class ProfileEntity
     private String lastName;
     private String username;
     private String password;
-    private String userEmail;
-    private String dateOfBirth;
+    private String email;
+    private String birthDay;
 
 
     public ProfileEntity(String name, String lastName, String nickname, String password, String userEmail, String dateOfBirth)
@@ -27,8 +27,8 @@ public class ProfileEntity
         this.lastName = lastName;
         this.username = nickname;
         this.password = password;
-        this.userEmail = userEmail;
-        this.dateOfBirth = dateOfBirth;
+        this.email = userEmail;
+        this.birthDay = dateOfBirth;
     }
 
     public ProfileEntity()
@@ -37,8 +37,8 @@ public class ProfileEntity
         this.lastName = "";
         this.username = "";
         this.password = "";
-        this.userEmail = "";
-        this.dateOfBirth = "";
+        this.email = "";
+        this.birthDay = "";
     }
 
     public String getName() {
@@ -57,12 +57,12 @@ public class ProfileEntity
         return password;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getBirthDay() {
+        return birthDay;
     }
 
     public void setName(String name) {
@@ -81,12 +81,12 @@ public class ProfileEntity
         this.password = password;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String userEmail) {
+        this.email = userEmail;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthDay(String dateOfBirth) {
+        this.birthDay = dateOfBirth;
     }
 
     public Long getId() {

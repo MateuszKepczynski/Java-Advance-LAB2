@@ -30,5 +30,6 @@ public class UserMapBean
     {
         var passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(password, userHashMap.get(username).getPassword()); // matches password
+
     }
 }

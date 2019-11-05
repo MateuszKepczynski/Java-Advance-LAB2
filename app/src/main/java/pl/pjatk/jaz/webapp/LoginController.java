@@ -1,18 +1,15 @@
 package pl.pjatk.jaz.webapp;
 
-import pl.pjatk.jaz.UserMapBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.pjatk.jaz.login.LoginRequest;
-import pl.pjatk.jaz.registration.HashPassword;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.io.Serializable;
 
 @Named
@@ -20,30 +17,12 @@ import java.io.Serializable;
 @ApplicationScoped
 public class LoginController implements Serializable
 {
-    FacesContext context = FacesContext.getCurrentInstance();
+    @Inject
+    UserToDatabase userToDatabase = new UserToDatabase();
 
     @Inject
     private LoginRequest loginRequest;
 
-    @Inject
-    UserMapBean userMapBean;
-
-    //User admin = new User("","admin","admin","admin","","","");
-
-    /*
-    public void login()
-    {
-        userMapBean.add(admin);
-
-        if(userMapBean.ifThereIs(loginRequest.getUsername()))
-        {
-            if(userMapBean.doesPasswordMatch(loginRequest.getUsername(), loginRequest.getPassword()))
-            {
-                System.out.println("/index.xhtml?faces-redirect=true");
-            }
-        }
-    }
-    */
     public String register()
     {
             HttpSession session = SessionUtils.getSession();
@@ -51,24 +30,32 @@ public class LoginController implements Serializable
             return "true";
     }
 
-
     public String validateUsernamePassword()
     {
         boolean valid = false;
         String pass;
 
-       // UserToDatabase userToDatabase = new UserToDatabase();
 
-        //userToDatabase.getUsername(loginRequest.getUsername());
+        String username = userToDatabase.getUsername(loginRequest.getUsername());
 
-       // userMapBean.add(admin);
-
-        if(userMapBean.ifThereIs(loginRequest.getUsername()))
+        if(username != "nothing")
         {
-            if(userMapBean.doesPasswordMatch(loginRequest.getUsername(), loginRequest.getPassword()))
+            if (username.equals(loginRequest.getUsername()))
             {
-                valid = true;
+                String password = userToDatabase.getPassword(loginRequest.getUsername());
+                if (passMatch(loginRequest.getPassword(), password))
+                {
+                    valid = true;
+                }
             }
+        }
+        else
+        {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Can't find user",
+                            "Please enter username again"));
         }
 
         if (valid)
@@ -94,4 +81,11 @@ public class LoginController implements Serializable
         session.invalidate(); // invalidating session for logout method
         return "true"; // returning true for future redirection based in face-config.xml
     }
+
+    public boolean passMatch(String password, String hashedPassword) //checking that password match to each other
+    {
+        var passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(password, hashedPassword); // matches password
+    }
+
 }
