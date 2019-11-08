@@ -17,28 +17,14 @@
     <div id="page">
         <div style="left: 0; position: absolute; text-align: center; top: 50%; width:100%;">
             <h:form>
-                <h:inputText
-                        style="padding: 12px 20px; font-size: 17px; border: 2px solid black; border-radius: 12px;"
-                        pt:placeholder="Login"
-                        title="Login" validatorMessage="Invalid username format"
-                        value="#{loginRequest.username}"/>
+                <h:inputText styleClass="textFieldInputs" pt:placeholder="Login" title="Login" value="#{loginRequest.username}"/>
                 <br/>
                 <br/>
-                <h:inputSecret
-                        style=" font-size: 17px; padding: 12px 20px; border: 2px solid black; border-radius: 12px;"
-                        pt:placeholder="Password"
-                        value="#{loginRequest.password}"/>
+                <h:inputSecret styleClass="textFieldInputs" pt:placeholder="Password" value="#{loginRequest.password}"/>
                 <br/>
                 <br/>
-                <h:commandButton style="display: inline-block; border-radius: 12px; background-color: #4a4a4a; border: none; color: #FFFFFF; text-align: center; font-size: 17px; padding: 10px 15px;
-            width: auto;
-            height: auto;  transition: all 0.5s; cursor: pointer; margin: 4px 2px;"
-                                 value="Login"
-                                 action="#{loginController.validateUsernamePassword}"/>
-                <h:commandButton style="display: inline-block; border-radius: 12px; background-color: #4a4a4a; border: none; color: #FFFFFF; text-align: center; font-size: 17px; padding: 10px 15px;
-            width: auto;
-            height: auto;  transition: all 0.5s; cursor: pointer; margin: 4px 2px;" value="Register"
-                                 action="#{loginController.register}"/>
+                <h:commandButton styleClass="loginButton" value="Login" action="#{loginController.validateUsernamePassword}"/>
+                <h:commandButton styleClass="loginButton" value="Register" action="#{loginController.register}"/>
             </h:form>
         </div>
     </div>

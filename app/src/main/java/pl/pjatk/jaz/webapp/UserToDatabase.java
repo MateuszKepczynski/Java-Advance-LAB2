@@ -16,7 +16,6 @@ public class UserToDatabase
     @Transactional
     public void addUserToDb(String name, String lastName, String username, String password, String userEmail, String dateOfBirth)
     {
-
             var profile = new ProfileEntity(name, lastName, username, password, userEmail, dateOfBirth);
             em.persist(profile); // adding profile to db
     }
@@ -36,6 +35,10 @@ public class UserToDatabase
         {
             return "nothing";
         }
+        catch (RollbackException e)
+        {
+            return "nothing";
+        }
 
     }
 
@@ -50,6 +53,10 @@ public class UserToDatabase
                         .setParameter("username", userInputUsername).getSingleResult().getPassword();
                 return list;
             }catch (NoResultException e)
+            {
+                return "nothing";
+            }
+            catch (RollbackException e)
             {
                 return "nothing";
             }
