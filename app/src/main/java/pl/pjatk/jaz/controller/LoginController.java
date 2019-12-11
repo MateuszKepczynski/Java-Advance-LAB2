@@ -1,7 +1,9 @@
-package pl.pjatk.jaz.webapp;
+package pl.pjatk.jaz.controller;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.pjatk.jaz.login.LoginRequest;
+import pl.pjatk.jaz.request.LoginRequest;
+import pl.pjatk.jaz.session.SessionUtils;
+import pl.pjatk.jaz.webapp.UserToDatabase;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
@@ -87,5 +89,4 @@ public class LoginController implements Serializable
         var passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(password, hashedPassword); // matches password
     }
-
 }

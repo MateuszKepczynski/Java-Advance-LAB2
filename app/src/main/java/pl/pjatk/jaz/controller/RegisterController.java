@@ -1,15 +1,16 @@
-package pl.pjatk.jaz.webapp;
+package pl.pjatk.jaz.controller;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.pjatk.jaz.registration.HashPassword;
-import pl.pjatk.jaz.registration.RegistrationRequest;
+import pl.pjatk.jaz.request.RegistrationRequest;
+import pl.pjatk.jaz.webapp.UserToDatabase;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@RequestScoped
+@ApplicationScoped
 public class RegisterController
 {
     @Inject
@@ -18,12 +19,12 @@ public class RegisterController
     @Inject
     UserToDatabase userToDatabase = new UserToDatabase();
 
-    HashPassword hashPassword = new HashPassword();
+    private HashPassword hashPassword = new HashPassword();
 
     public boolean register() //
     {
-        String hashedPassword;
-        hashedPassword = hashPassword.hash(registrationRequest.getPassword()); //hashing password
+        String hashedPassword = hashPassword.hash(registrationRequest.getPassword()); //hashing password
+
 
         if(userToDatabase.checkIfNickIsUnique(registrationRequest.getUsername()))
         {

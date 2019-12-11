@@ -1,4 +1,4 @@
-package pl.pjatk.jaz.login;
+package pl.pjatk.jaz.session;
 
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

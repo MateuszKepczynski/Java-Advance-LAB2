@@ -1,5 +1,7 @@
 package pl.pjatk.jaz.webapp;
 
+import pl.pjatk.jaz.entity.ProfileEntity;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

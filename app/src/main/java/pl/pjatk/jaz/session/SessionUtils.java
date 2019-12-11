@@ -1,25 +1,29 @@
-package pl.pjatk.jaz.webapp;
+package pl.pjatk.jaz.session;
 
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 @ManagedBean
 @ApplicationScoped
 public class SessionUtils {
 
-    public static HttpSession getSession() {
+    public static HttpSession getSession()
+    {
         return (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
     }
 
-    public static HttpServletRequest getRequest() {
+    public static HttpServletRequest getRequest()
+    {
         return (HttpServletRequest) FacesContext.getCurrentInstance()
                 .getExternalContext().getRequest();
     }
 
-    public static String getUserName() {
+    public static String getUserName()
+    {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
         return session.getAttribute("username").toString();

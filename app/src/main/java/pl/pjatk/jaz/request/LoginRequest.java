@@ -1,4 +1,4 @@
-package pl.pjatk.jaz.login;
+package pl.pjatk.jaz.request;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
