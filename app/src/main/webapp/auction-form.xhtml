@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Allezon</title>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:body style="background-image: url(resources/images/gifback.gif); background-position: top; background-repeat: repeat;  background-size: auto"></h:body>
+    <h:form>
+        <div style="position: fixed; left: 40%;">
+            <h:commandButton action="#{pageController.WelcomeForm}" styleClass="topScreenButtons"
+                             value="STRONA GŁÓWNA"/>
+            <h:commandButton action="#{pageController.showAuctionForm}" styleClass="topScreenButtons" value="AUKCJE"/>
+            <h:commandButton action="#{pageController.showProfileForm}" styleClass="topScreenButtons" value="PROFIL"/>
+            <br/>
+            <h:commandButton action="#{pageController.editAuction}" styleClass="topScreenButtons"
+                             value="DODAJ AUKCJE"/>
+        </div>
+        <h:commandButton styleClass="loginButton" style="left: 100%" value="Logout" action="#{loginController.logout}"/>
+
+        <div class="centered">
+            <div class="indexWelcomeBorder">
+                <ui:repeat value="#{auctionController.auctionList}" var="auction">
+                    <h:link styleClass="list-group-item list-group-item-action" outcome="edit-list-auction">
+                        <f:param name="auctionId" value="#{auction.id}"/>
+
+                        <h:outputText value="##{auction.id} #{auction.title} #{auction.categoryId}"/>
+                    </h:link>
+                </ui:repeat>
+            </div>
+        </div>
+
+    </h:form>
+</h:body>
+
+</html>

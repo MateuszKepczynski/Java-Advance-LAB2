@@ -22,7 +22,6 @@ public class JavFilter implements Filter {
             HttpServletRequest reqt = (HttpServletRequest) request;
             HttpServletResponse resp = (HttpServletResponse) response;
             HttpSession ses = reqt.getSession(false);
-
             String reqURI = reqt.getRequestURI();
             if (reqURI.indexOf("/login.xhtml") >= 0
                     || (ses != null && ses.getAttribute("username") != null)

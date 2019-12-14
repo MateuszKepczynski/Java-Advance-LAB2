@@ -12,13 +12,13 @@
 
         <ui:define name="content">
             <div class="w-25">
-                <h:link styleClass="btn-primary" value="Add" outcome="edit-list-section"/>
+                <h:link styleClass="btn-primary" value="Add" outcome="edit-list-category"/>
                 <div class="list-group">
-                    <ui:repeat value="#{sectionController.sectionList}" var="auction">
-                        <h:link styleClass="list-group-item list-group-item-action" outcome="edit-list-section">
-                            <f:param name="sectionId" value="#{auction.id}" />
+                    <ui:repeat value="#{categoryController.categoryList}" var="category">
+                        <h:link styleClass="list-group-item list-group-item-action" outcome="edit-list-category">
+                            <f:param name="categoryId" value="#{category.id}"/>
 
-                            <h:outputText  value="##{auction.id} #{auction.name}"/>
+                            <h:outputText value="##{category.id} #{category.name} #{category.sectionId}"/>
                         </h:link>
                     </ui:repeat>
                 </div>

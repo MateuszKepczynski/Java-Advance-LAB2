@@ -33,16 +33,12 @@ public class UserToDatabase
                     .setParameter("username", userInputUsername).getSingleResult().getUsername();
             return list;
         }
-        catch (NoResultException e)
+        catch (NoResultException | RollbackException e)
         {
             return "nothing";
         }
-        catch (RollbackException e)
-        {
-            return "nothing";
-        }
-
     }
+
 
     @Transactional
     public String getPassword(String userInputUsername) // searching db for user and returning password
@@ -54,11 +50,8 @@ public class UserToDatabase
                 var list = em.createQuery("from ProfileEntity where username = :username", ProfileEntity.class)
                         .setParameter("username", userInputUsername).getSingleResult().getPassword();
                 return list;
-            }catch (NoResultException e)
-            {
-                return "nothing";
             }
-            catch (RollbackException e)
+            catch (NoResultException | RollbackException e)
             {
                 return "nothing";
             }
@@ -73,11 +66,7 @@ public class UserToDatabase
                     .setParameter("username", username).getSingleResult().getUsername();
             return false;
         }
-        catch (RollbackException e)
-        {
-            return true;
-        }
-        catch (NoResultException e)
+        catch (RollbackException | NoResultException e)
         {
             return true;
         }
@@ -92,11 +81,7 @@ public class UserToDatabase
                     .setParameter("email", email).getSingleResult().getEmail();
             return false;
         }
-        catch (RollbackException e)
-        {
-            return true;
-        }
-        catch (NoResultException e)
+        catch (RollbackException | NoResultException e)
         {
             return true;
         }

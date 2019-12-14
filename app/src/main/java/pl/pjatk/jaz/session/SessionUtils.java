@@ -8,7 +8,8 @@ import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @ApplicationScoped
-public class SessionUtils {
+public class SessionUtils
+{
 
     public static HttpSession getSession()
     {
@@ -29,7 +30,8 @@ public class SessionUtils {
         return session.getAttribute("username").toString();
     }
 
-    public static String getUserId() {
+    public static String getUserId()
+    {
         HttpSession session = getSession();
         if (session != null)
             return (String) session.getAttribute("userid");

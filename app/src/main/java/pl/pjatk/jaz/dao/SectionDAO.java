@@ -12,4 +12,5 @@ public interface SectionDAO
     SectionRequest getSection();
     Optional<SectionEntity> getSectionById(Long sectionId);
     void save(SectionEntity sectionEntity);
+    void delete(SectionEntity sectionEntity);
 }

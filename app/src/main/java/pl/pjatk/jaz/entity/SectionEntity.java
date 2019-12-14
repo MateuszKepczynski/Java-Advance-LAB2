@@ -13,12 +13,10 @@ public class SectionEntity
 
     @Column(name = "name")
     private String name;
-
-    public SectionEntity(String name)
-    {
-        this.name = name;
-    }
-
+    /*
+    @OneToOne(mappedBy="sectionEntity", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private CategoryEntity categoryEntity;
+*/
     public SectionEntity()
     {
         name = "";
@@ -49,4 +47,14 @@ public class SectionEntity
     {
         this.name = name;
     }
+/*
+
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
+    }
+
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
+    }
+*/
 }

@@ -1,7 +1,6 @@
 databaseChangeLog:
-
   - changeSet:
-      id: 20191110_init
+      id: 20191210_init
       author: Mateusz Kępczyński
       sqlFile:
         relativeToChangelogFile: true

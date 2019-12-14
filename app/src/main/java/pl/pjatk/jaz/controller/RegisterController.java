@@ -5,7 +5,6 @@ import pl.pjatk.jaz.request.RegistrationRequest;
 import pl.pjatk.jaz.webapp.UserToDatabase;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 

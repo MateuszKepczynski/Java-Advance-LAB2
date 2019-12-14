@@ -14,13 +14,7 @@ CREATE TABLE profile
     PRIMARY KEY (id)
 );
 
-CREATE table category
-(
-    id   BIGSERIAL PRIMARY KEY ,
-    name varchar not null ,
-    description varchar not null ,
-    section_id BIGINT not null
-);
+
 
 CREATE table section
 (
@@ -28,15 +22,22 @@ CREATE table section
     name varchar not null
 
 );
-ALTER TABLE category ADD CONSTRAINT dodaniekluczasekcji FOREIGN KEY (section_id) REFERENCES section (id);
 
+CREATE table category
+(
+    id   BIGSERIAL PRIMARY KEY ,
+    name varchar not null ,
+    description varchar not null ,
+    section_id BIGINT not null,
+    FOREIGN KEY (section_id) REFERENCES section (id)
+);
 
 CREATE table auction
 (
     id   BIGSERIAL PRIMARY KEY,
     title varchar not null ,
     description varchar not null ,
-    price money not null,
+    price NUMERIC not null,
     profile_id BIGINT not null,
     category_id BIGINT not null,
     FOREIGN KEY (profile_id) REFERENCES profile (id),

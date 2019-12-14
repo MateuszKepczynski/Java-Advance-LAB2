@@ -21,7 +21,7 @@ public class SectionDAOImpl implements SectionDAO
     @Transactional
     public List<SectionEntity> getSectionList()
     {
-        return em.createQuery("FROM SectionEntity ORDER BY id ASC").getResultList();
+        return em.createQuery("FROM SectionEntity ORDER BY id ASC").getResultList(); // TO WYŚWIETLA
     }
 
     @Override
@@ -29,14 +29,14 @@ public class SectionDAOImpl implements SectionDAO
     public SectionRequest getSection()
     {
         return null;
-    }
+    } // TO NIC NIE ROBI
 
     @Override
     @Transactional
     public Optional<SectionEntity> getSectionById(Long sectionId)
     {
-        var door = em.find(SectionEntity.class, sectionId);
-        return Optional.ofNullable(door);
+        var section = em.find(SectionEntity.class, sectionId);
+        return Optional.ofNullable(section); //TO ZWRACA PO ID
     }
 
     @Override
@@ -45,9 +45,24 @@ public class SectionDAOImpl implements SectionDAO
     {
         if (sectionEntity.getId() == null)
         {
-            em.persist(sectionEntity);
+            em.persist(sectionEntity); // TO ZAPISUJE
         } else {
             em.merge(sectionEntity);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void delete(SectionEntity sectionEntity)
+    {
+        if (sectionEntity.getId() != null)
+        {
+            var section = em.find(SectionEntity.class,sectionEntity.getId());
+            em.remove(section);
+        }
+        else
+        {
+            System.out.println("lel");
         }
     }
 }

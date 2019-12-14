@@ -14,7 +14,6 @@ import java.util.List;
 @RequestScoped
 public class SectionController
 {
-
     private SectionRequest sectionRequest;
 
     @Inject
@@ -53,6 +52,12 @@ public class SectionController
         var section = new SectionEntity(sectionRequest.getId(),sectionRequest.getName());
         sectionDAO.save(section);
 
-        return "true";
+        return "/list-section.xhtml?faces-redirect=true";
+    }
+
+    public String delete(){
+        var section = new SectionEntity(sectionRequest.getId(),sectionRequest.getName());
+        sectionDAO.delete(section);
+        return "/list-section.xhtml?faces-redirect=true";
     }
 }
