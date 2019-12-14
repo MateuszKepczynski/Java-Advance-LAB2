@@ -39,7 +39,7 @@ public class CategoryDAOImpl implements CategoryDAO
     {
         if (categoryEntity.getId() == null)
         {
-            em.persist(categoryEntity); // TO ZAPISUJE
+            em.persist(categoryEntity);
         } else {
             em.merge(categoryEntity);
         }
