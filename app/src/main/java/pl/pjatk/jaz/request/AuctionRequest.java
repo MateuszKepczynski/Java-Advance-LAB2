@@ -2,6 +2,11 @@ package pl.pjatk.jaz.request;
 
 import pl.pjatk.jaz.entity.AuctionEntity;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
+@Named
+@RequestScoped
 public class AuctionRequest
 {
     private Long id;
@@ -30,7 +35,7 @@ public class AuctionRequest
         this.title = auction.getTitle();
         this.price = auction.getPrice();
         this.profileId = auction.getProfileId();
-        this.categoryId = auction.getId();
+        this.categoryId = auction.getCategoryId();
         this.description = auction.getDescription();
     }
 

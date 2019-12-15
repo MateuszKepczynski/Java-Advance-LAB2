@@ -1,6 +1,7 @@
 package pl.pjatk.jaz.controller;
 
 import pl.pjatk.jaz.dao.FindUserDAO;
+import pl.pjatk.jaz.request.AuctionRequest;
 import pl.pjatk.jaz.session.SessionUtils;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,6 +14,9 @@ public class PageController
 {
     @Inject
     FindUserDAO findUserDAO;
+
+    @Inject
+    AuctionRequest auctionRequest;
 
     public String showProfileForm()
     {
@@ -80,6 +84,19 @@ public class PageController
     public String editAuction()
     {
         return "/edit-list-auction.xhtml?faces-redirect=true";
+    }
+
+    public String canEditAuction()
+    {
+        String session = SessionUtils.getUserName();
+        if(findUserDAO.getUserByUsername(session).equals(auctionRequest.getProfileId()))
+        {
+            return "/edit-list-auction.xhtml?faces-redirect=true";
+        }
+        else
+        {
+            return "/index.xhtml?faces-redirect=true";
+        }
     }
 
 }
