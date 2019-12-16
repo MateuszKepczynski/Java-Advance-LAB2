@@ -38,6 +38,7 @@ CREATE table auction
     title varchar not null ,
     description varchar not null ,
     price NUMERIC not null,
+    photo VARCHAR,
     profile_id BIGINT not null,
     category_id BIGINT not null,
     FOREIGN KEY (profile_id) REFERENCES profile (id),

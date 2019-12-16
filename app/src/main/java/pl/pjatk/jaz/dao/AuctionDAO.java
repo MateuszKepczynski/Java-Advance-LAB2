@@ -10,5 +10,5 @@ public interface AuctionDAO
     List<AuctionEntity> getAuctionList();
     Optional<AuctionEntity> getAuctionById(Long auctionId);
     void save(AuctionEntity auctionEntity);
-    void delete(AuctionEntity auctionEntity);
+    void delete(Long id);
 }

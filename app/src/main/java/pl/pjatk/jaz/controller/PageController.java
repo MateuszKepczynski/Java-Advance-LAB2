@@ -99,4 +99,9 @@ public class PageController
         }
     }
 
+    public String getUserName()
+    {
+        return SessionUtils.getUserName();
+    }
+
 }

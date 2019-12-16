@@ -47,6 +47,7 @@ public class LoginController implements Serializable
                 String password = userToDatabase.getPassword(loginRequest.getUsername());
                 if (passMatch(loginRequest.getPassword(), password))
                 {
+
                     valid = true;
                 }
             }

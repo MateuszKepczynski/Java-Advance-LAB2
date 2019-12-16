@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <title>Allezon</title>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:body style="background-image: url(resources/images/gifback.gif); background-position: top; background-repeat: repeat;  background-size: auto"/>
+
+    <c:if test="#{findUserDAOImpl.getUserByUsername(pageController.userName) == auctionController.auctionRequest.profileId}">
+        <h:link value="Edit" styleClass="list-group-item list-group-item-action" outcome="edit-list-auction">
+            <f:param name="auctionId" value="#{auctionController.auctionRequest.id}"/>
+        </h:link>
+    </c:if>
+    <h:graphicImage url="#{auctionController.auctionRequest.photo}" style="width: 30%"/>
+    <hr/>
+    <h2>#{auctionController.auctionRequest.title} <br/> Cena: <b>#{auctionController.auctionRequest.price}</b> </h2>
+    <hr/>
+    #{auctionController.auctionRequest.description}
+
+</h:body>
+</html>

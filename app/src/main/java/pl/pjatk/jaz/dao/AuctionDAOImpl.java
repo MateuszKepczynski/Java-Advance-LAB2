@@ -45,11 +45,11 @@ public class AuctionDAOImpl implements AuctionDAO
 
     @Override
     @Transactional
-    public void delete(AuctionEntity auctionEntity)
+    public void delete(Long id)
     {
-        if (auctionEntity.getId() != null)
+        if (id != null)
         {
-            em.remove(em.find(AuctionEntity.class, auctionEntity.getId()));
+            em.remove(em.find(AuctionEntity.class, id));
         }
         else
         {

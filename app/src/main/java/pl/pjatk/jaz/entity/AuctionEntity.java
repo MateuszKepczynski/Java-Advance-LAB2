@@ -26,16 +26,20 @@ public class AuctionEntity
     @Column(name = "category_id")//FOREIGN KEY one to one
     private Long categoryId;
 
+    @Column(name = "photo")
+    private String photo;
+
     public AuctionEntity()
     {
     }
 
-    public AuctionEntity(Long id,String title, double price, String description)
+    public AuctionEntity(Long id,String title, double price, String description, String photo)
     {
         this.id = id;
         this.title = title;
         this.price = price;
         this.description = description;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -84,5 +88,13 @@ public class AuctionEntity
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

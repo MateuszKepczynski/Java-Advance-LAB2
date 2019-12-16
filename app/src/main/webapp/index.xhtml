@@ -4,7 +4,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
     <title>Allezon</title>
@@ -18,7 +18,9 @@
         <h:commandButton action="#{pageController.welcomeForm}" styleClass="topScreenButtons" value="STRONA GŁÓWNA"/>
         <h:commandButton action="#{pageController.showAuctionForm}" styleClass="topScreenButtons" value="AUKCJE"/>
         <h:commandButton action="#{pageController.showProfileForm}" styleClass="topScreenButtons" value="PROFIL" />
-            <h:commandButton action="#{pageController.adminAccess}" styleClass="topScreenButtons" value="ADMIN BUTTON" />
+            <c:if test="#{session.getAttribute('username') == 'kepes12'}">
+                <h:commandButton action="#{pageController.adminAccess}" styleClass="topScreenButtons" value="ADMIN BUTTON" />
+            </c:if>
         </div>
         <h:commandButton styleClass="loginButton" style="left: 100%" value="Logout" action="#{loginController.logout}"/>
         <div class="centered">

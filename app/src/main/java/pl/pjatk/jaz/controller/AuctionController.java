@@ -56,11 +56,16 @@ public class AuctionController
     {
         String username = SessionUtils.getUserName();
 
-        var auction = new AuctionEntity(auctionRequest.getId(),auctionRequest.getTitle(),auctionRequest.getPrice(), auctionRequest.getDescription());
+        var auction = new AuctionEntity(auctionRequest.getId(),auctionRequest.getTitle(),auctionRequest.getPrice(), auctionRequest.getDescription(), auctionRequest.getPhoto());
         assert username != null;
         auction.setProfileId(findUserDAO.getUserByUsername(username));
         auction.setCategoryId(auctionRequest.getCategoryId());
         auctionDAO.save(auction);
         return "/auction-form.xhtml?faces-redirect=true";
+    }
+
+    public String delete(){
+        auctionDAO.delete(auctionRequest.getId());
+        return "/list-section.xhtml?faces-redirect=true";
     }
 }

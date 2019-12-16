@@ -5,31 +5,30 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:form="http://www.springframework.org/tags/form">
+      xmlns:form="http://www.springframework.org/tags/form" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:body>
-
     <ui:composition template="templates/base.xhtml">
         <ui:param name="title" value="Edit door"/>
-
         <ui:define name="content">
             <div class="text-center">
                 <h:outputLabel rendered="#{flash.containsKey('error-message')}"
                                styleClass="alert alert-danger" value="#{flash['error-message']}"/>
                 <h:form styleClass="form-base">
+                    <f:attribute name="auctionId" value="#{auctionController.auctionRequest.id}"/>
                     <h:inputHidden value="#{auctionController.auctionRequest.id}" />
                     <div class="form-group">
+
                         <h:inputText id="auction-title" styleClass="form-control" a:placeholder="Nazwa" value="#{auctionController.auctionRequest.title}"/>
-                        <h:inputText id="category-disc" styleClass="form-control" a:placeholder="Opis" value="#{auctionController.auctionRequest.description}"/>
-                        <h:inputText id="category-price" styleClass="form-control" a:placeholder="Cena" value="#{auctionController.auctionRequest.price}"/>
-                        <h:inputText id="category-secId" styleClass="form-control" a:placeholder="Sekcja" value="#{auctionController.auctionRequest.categoryId}"/>
+                        <h:inputText id="auction-desc" styleClass="form-control" a:placeholder="Opis" value="#{auctionController.auctionRequest.description}"/>
+                        <h:inputText id="auction-price" styleClass="form-control" a:placeholder="Cena" value="#{auctionController.auctionRequest.price}"/>
+                        <h:inputText id="auction-secId" styleClass="form-control" a:placeholder="Sekcja" value="#{auctionController.auctionRequest.categoryId}"/>
+                        <h:inputText id="auction-photo" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.photo}"/>
                     </div>
                     <h:commandButton styleClass="btn btn-primary" value="Save" action="#{auctionController.save}"/><br/><br/>
-                    <h:commandButton styleClass="btn btn-primary" value="Delete" action="#{categoryController.delete}"/><br/>
+                    <h:commandButton styleClass="btn btn-primary" value="Delete" action="#{auctionController.delete}"/><br/>
                 </h:form>
             </div>
         </ui:define>
-
     </ui:composition>
-
 </h:body>
 </html>

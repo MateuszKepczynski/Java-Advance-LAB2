@@ -15,12 +15,13 @@ public class AuctionRequest
     private double price;
     private Long profileId;
     private Long categoryId;
+    private String photo;
 
     public AuctionRequest()
     {
     }
 
-    public AuctionRequest(Long id, String title, double price, Long profileId, Long auctionId, String description)
+    public AuctionRequest(Long id, String title, double price, Long profileId, Long auctionId, String description, String photo)
     {
         this.id = id;
         this.title = title;
@@ -28,6 +29,7 @@ public class AuctionRequest
         this.profileId = profileId;
         this.categoryId = auctionId;
         this.description= description;
+        this.photo = photo;
     }
 
     public AuctionRequest(AuctionEntity auction) {
@@ -37,6 +39,7 @@ public class AuctionRequest
         this.profileId = auction.getProfileId();
         this.categoryId = auction.getCategoryId();
         this.description = auction.getDescription();
+        this.photo = auction.getPhoto();
     }
 
     public Long getId() {
@@ -85,5 +88,13 @@ public class AuctionRequest
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
