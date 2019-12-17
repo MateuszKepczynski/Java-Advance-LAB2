@@ -29,7 +29,7 @@ public class LoginController implements Serializable
     {
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", "creatingUser");
-            return "true";
+            return "/register.xhtml?faces-redirect=true";
     }
 
     public String validateUsernamePassword()
@@ -65,14 +65,14 @@ public class LoginController implements Serializable
         {
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", loginRequest.getUsername());
-            pass= "true";
+            pass= "/index.xhtml?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Incorrect Username or Passowrd",
                             "Please enter correct username and Password"));
-            pass = "false";
+            pass = "/login.xhtml?faces-redirect=true";
         }
         return pass; //returning "pass" for future redirection based in face-config.xml
     }
@@ -82,7 +82,7 @@ public class LoginController implements Serializable
     {
         HttpSession session = SessionUtils.getSession();
         session.invalidate(); // invalidating session for logout method
-        return "true"; // returning true for future redirection based in face-config.xml
+        return "/login.xhtml?faces-redirect=true"; // returning true for future redirection based in face-config.xml
     }
 
     public boolean passMatch(String password, String hashedPassword) //checking that password match to each other

@@ -66,6 +66,6 @@ public class AuctionController
 
     public String delete(){
         auctionDAO.delete(auctionRequest.getId());
-        return "/list-section.xhtml?faces-redirect=true";
+        return "/auction-form.xhtml?faces-redirect=true";
     }
 }
