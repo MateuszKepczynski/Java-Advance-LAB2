@@ -26,7 +26,6 @@
         <hr/>
         <br/><br/>
         <ui:repeat value="#{auctionController.auctionList}" var="auction">
-
             <h:link styleClass="list-group-item list-group-item-action" outcome="show-auction">
                 <f:param name="auctionId" value="#{auction.id}"/>
                 <div class="auctionBorder">

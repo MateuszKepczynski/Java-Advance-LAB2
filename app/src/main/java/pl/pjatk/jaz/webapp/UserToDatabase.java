@@ -1,6 +1,6 @@
 package pl.pjatk.jaz.webapp;
 
-import pl.pjatk.jaz.entity.ProfileEntity;
+import pl.pjatk.jaz.user.ProfileEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

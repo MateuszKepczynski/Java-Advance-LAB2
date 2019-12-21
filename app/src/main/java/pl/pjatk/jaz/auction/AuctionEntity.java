@@ -1,6 +1,10 @@
-package pl.pjatk.jaz.entity;
+package pl.pjatk.jaz.auction;
+
+import pl.pjatk.jaz.photo.PhotoEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="auction")
@@ -26,8 +30,13 @@ public class AuctionEntity
     @Column(name = "category_id")//FOREIGN KEY one to one
     private Long categoryId;
 
-    @Column(name = "photo")
+
+    @Column(name = "photo")//DO USUNIĘCIA
     private String photo;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="auctionEntity",
+            cascade= {CascadeType.ALL})
+    private List<PhotoEntity> photoEntities;
 
     public AuctionEntity()
     {
@@ -97,4 +106,22 @@ public class AuctionEntity
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    public List<PhotoEntity> getPhotoEntities() {
+        return photoEntities;
+    }
+
+    public void setPhotoEntities(List<PhotoEntity> photoEntities) {
+        this.photoEntities = photoEntities;
+    }
+
+    public void addPhoto(PhotoEntity pE)
+    {
+        if(photoEntities == null)
+        {
+            photoEntities = new ArrayList<>();
+        }
+        photoEntities.add(pE);
+    }
+
 }

@@ -1,7 +1,4 @@
-package pl.pjatk.jaz.dao;
-
-import pl.pjatk.jaz.entity.SectionEntity;
-import pl.pjatk.jaz.request.SectionRequest;
+package pl.pjatk.jaz.section;
 
 import java.util.List;
 import java.util.Optional;

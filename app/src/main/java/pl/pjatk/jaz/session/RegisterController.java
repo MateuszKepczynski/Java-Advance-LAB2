@@ -1,7 +1,6 @@
-package pl.pjatk.jaz.controller;
+package pl.pjatk.jaz.session;
 
-import pl.pjatk.jaz.registration.HashPassword;
-import pl.pjatk.jaz.request.RegistrationRequest;
+import pl.pjatk.jaz.HashPassword;
 import pl.pjatk.jaz.webapp.UserToDatabase;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -20,7 +19,7 @@ public class RegisterController
 
     private HashPassword hashPassword = new HashPassword();
 
-    public boolean register() //
+    public String register() //
     {
         String hashedPassword = hashPassword.hash(registrationRequest.getPassword()); //hashing password
 
@@ -34,20 +33,20 @@ public class RegisterController
                     userToDatabase.addUserToDb(registrationRequest.getName(), registrationRequest.getLastName(), registrationRequest.getUsername(),
                             hashedPassword, registrationRequest.getUserEmail(), registrationRequest.getDateOfBirth());
 
-                    return true;
+                    return "/index.xhtml?faces-redirect=true";
                 }
                 else
                 {
                     System.out.println("Passwords doesn't match: " + registrationRequest.getPassword() + "!=" + registrationRequest.getSecPassword());
-                    return false;
+                    return "/register.xhtml?faces-redirect=true";
                 }
             }
             else
-                return false;
+                return "/register.xhtml?faces-redirect=true";
         }
         else
         {
-            return false;
+            return "/register.xhtml?faces-redirect=true";
         }
     }
 }

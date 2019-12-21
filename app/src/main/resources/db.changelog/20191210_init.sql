@@ -47,17 +47,10 @@ CREATE table auction
 
 create table photo
 (
-    id   BIGSERIAL PRIMARY KEY ,
-    photo varchar not null
-);
-
-create table auction_photo
-(
-    author_id BIGINT not null ,
-    photo_id BIGINT not null,
-    FOREIGN KEY (author_id) REFERENCES auction (id),
-    foreign key (photo_id) REFERENCES photo (id)
-
+    id   BIGSERIAL PRIMARY KEY,
+    auction_id BIGSERIAL,
+    photo varchar,
+    FOREIGN KEY (auction_id) REFERENCES auction (id)
 );
 
 create table parameter

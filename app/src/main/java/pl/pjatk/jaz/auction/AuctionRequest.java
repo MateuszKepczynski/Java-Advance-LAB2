@@ -1,9 +1,11 @@
-package pl.pjatk.jaz.request;
+package pl.pjatk.jaz.auction;
 
-import pl.pjatk.jaz.entity.AuctionEntity;
+import pl.pjatk.jaz.auction.AuctionEntity;
+import pl.pjatk.jaz.photo.PhotoEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.util.List;
 
 @Named
 @RequestScoped
@@ -16,6 +18,9 @@ public class AuctionRequest
     private Long profileId;
     private Long categoryId;
     private String photo;
+    private String photoTwo;
+    private String thirdPhoto;
+    private List<PhotoEntity> photoEntity;
 
     public AuctionRequest()
     {
@@ -40,6 +45,9 @@ public class AuctionRequest
         this.categoryId = auction.getCategoryId();
         this.description = auction.getDescription();
         this.photo = auction.getPhoto();
+        this.photoEntity = auction.getPhotoEntities();
+        this.photoTwo = auction.getPhotoEntities().get(1).getPhoto();
+        this.thirdPhoto = auction.getPhotoEntities().get(2).getPhoto();
     }
 
     public Long getId() {
@@ -96,5 +104,29 @@ public class AuctionRequest
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public List<PhotoEntity> getPhotoEntity() {
+        return photoEntity;
+    }
+
+    public void setPhotoEntity(List<PhotoEntity> photoEntity) {
+        this.photoEntity = photoEntity;
+    }
+
+    public String getPhotoTwo() {
+        return photoTwo;
+    }
+
+    public void setPhotoTwo(String photoTwo) {
+        this.photoTwo = photoTwo;
+    }
+
+    public String getThirdPhoto() {
+        return thirdPhoto;
+    }
+
+    public void setThirdPhoto(String thirdPhoto) {
+        this.thirdPhoto = thirdPhoto;
     }
 }

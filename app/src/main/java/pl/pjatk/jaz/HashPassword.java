@@ -1,4 +1,4 @@
-package pl.pjatk.jaz.registration;
+package pl.pjatk.jaz;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

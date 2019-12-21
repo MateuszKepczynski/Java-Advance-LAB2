@@ -1,4 +1,4 @@
-package pl.pjatk.jaz.entity;
+package pl.pjatk.jaz.user;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -1,6 +1,4 @@
-package pl.pjatk.jaz.dao;
-
-import pl.pjatk.jaz.entity.AuctionEntity;
+package pl.pjatk.jaz.auction;
 
 import java.util.List;
 import java.util.Optional;

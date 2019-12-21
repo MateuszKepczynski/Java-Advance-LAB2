@@ -19,7 +19,7 @@
             <f:param name="auctionId" value="#{auctionController.auctionRequest.id}"/>
         </h:link>
     </c:if>
-    <h:graphicImage url="#{auctionController.auctionRequest.photo}" style="width: 30%"/>
+    <h:graphicImage url="#{photoController.getPhotoByAuctionId(auctionController.auctionRequest.id)}" style="width: 30%"/>
     <hr/>
     <h2>#{auctionController.auctionRequest.title} <br/> Cena: <b>#{auctionController.auctionRequest.price}</b> </h2>
     <hr/>

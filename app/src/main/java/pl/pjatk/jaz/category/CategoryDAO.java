@@ -1,8 +1,5 @@
-package pl.pjatk.jaz.dao;
+package pl.pjatk.jaz.category;
 
-import pl.pjatk.jaz.entity.CategoryEntity;
-
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

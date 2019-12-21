@@ -1,6 +1,4 @@
-package pl.pjatk.jaz.dao;
-
-import pl.pjatk.jaz.entity.AuctionEntity;
+package pl.pjatk.jaz.auction;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

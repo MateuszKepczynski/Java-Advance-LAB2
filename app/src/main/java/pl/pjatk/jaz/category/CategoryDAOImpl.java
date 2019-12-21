@@ -1,5 +1,4 @@
-package pl.pjatk.jaz.dao;
-import pl.pjatk.jaz.entity.CategoryEntity;
+package pl.pjatk.jaz.category;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

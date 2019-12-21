@@ -1,6 +1,6 @@
-package pl.pjatk.jaz.request;
+package pl.pjatk.jaz.section;
 
-import pl.pjatk.jaz.entity.SectionEntity;
+import pl.pjatk.jaz.section.SectionEntity;
 
 public class SectionRequest
 {

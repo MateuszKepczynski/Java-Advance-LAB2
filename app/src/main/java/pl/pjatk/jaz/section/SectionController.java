@@ -1,9 +1,6 @@
-package pl.pjatk.jaz.controller;
+package pl.pjatk.jaz.section;
 
 import pl.pjatk.jaz.ParamRetriever;
-import pl.pjatk.jaz.dao.SectionDAO;
-import pl.pjatk.jaz.entity.SectionEntity;
-import pl.pjatk.jaz.request.SectionRequest;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

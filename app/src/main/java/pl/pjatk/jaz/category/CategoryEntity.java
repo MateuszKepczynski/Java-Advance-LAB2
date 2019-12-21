@@ -1,4 +1,4 @@
-package pl.pjatk.jaz.entity;
+package pl.pjatk.jaz.category;
 
 import javax.persistence.*;
 

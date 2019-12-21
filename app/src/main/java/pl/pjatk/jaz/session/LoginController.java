@@ -1,8 +1,6 @@
-package pl.pjatk.jaz.controller;
+package pl.pjatk.jaz.session;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.pjatk.jaz.request.LoginRequest;
-import pl.pjatk.jaz.session.SessionUtils;
 import pl.pjatk.jaz.webapp.UserToDatabase;
 
 import javax.annotation.ManagedBean;

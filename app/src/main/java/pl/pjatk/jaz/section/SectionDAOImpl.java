@@ -1,7 +1,4 @@
-package pl.pjatk.jaz.dao;
-
-import pl.pjatk.jaz.entity.SectionEntity;
-import pl.pjatk.jaz.request.SectionRequest;
+package pl.pjatk.jaz.section;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

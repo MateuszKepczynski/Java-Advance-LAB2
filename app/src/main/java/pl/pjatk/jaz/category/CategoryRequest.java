@@ -1,7 +1,6 @@
-package pl.pjatk.jaz.request;
+package pl.pjatk.jaz.category;
 
-import pl.pjatk.jaz.entity.CategoryEntity;
-import pl.pjatk.jaz.entity.SectionEntity;
+import pl.pjatk.jaz.category.CategoryEntity;
 
 public class CategoryRequest
 {

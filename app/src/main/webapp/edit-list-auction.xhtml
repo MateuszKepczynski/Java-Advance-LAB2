@@ -21,8 +21,12 @@
                         <h:inputText id="auction-title" styleClass="form-control" a:placeholder="Nazwa" value="#{auctionController.auctionRequest.title}"/>
                         <h:inputText id="auction-desc" styleClass="form-control" a:placeholder="Opis" value="#{auctionController.auctionRequest.description}"/>
                         <h:inputText id="auction-price" styleClass="form-control" a:placeholder="Cena" value="#{auctionController.auctionRequest.price}"/>
-                        <h:inputText id="auction-secId" styleClass="form-control" a:placeholder="Sekcja" value="#{auctionController.auctionRequest.categoryId}"/>
+                        <h:selectOneMenu value="#{auctionController.auctionRequest.categoryId}" >
+                            <f:selectItems value="#{categoryController.categoryList}" var="category" itemLabel="#{category.name}" itemValue="#{category.id}" />
+                        </h:selectOneMenu>
                         <h:inputText id="auction-photo" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.photo}"/>
+                        <h:inputText id="auction-photo2" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.photoTwo}"/>
+                        <h:inputText id="auction-photo3" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.thirdPhoto}"/>
                     </div>
                     <h:commandButton styleClass="btn btn-primary" value="Save" action="#{auctionController.save}"/><br/><br/>
                     <h:commandButton styleClass="btn btn-primary" value="Delete" action="#{auctionController.delete}"/><br/>

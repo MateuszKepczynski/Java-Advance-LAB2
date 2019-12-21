@@ -1,7 +1,7 @@
-package pl.pjatk.jaz.controller;
+package pl.pjatk.jaz.page;
 
-import pl.pjatk.jaz.dao.FindUserDAO;
-import pl.pjatk.jaz.request.AuctionRequest;
+import pl.pjatk.jaz.user.FindUserDAO;
+import pl.pjatk.jaz.auction.AuctionRequest;
 import pl.pjatk.jaz.session.SessionUtils;
 
 import javax.enterprise.context.RequestScoped;

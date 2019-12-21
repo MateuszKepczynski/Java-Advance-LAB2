@@ -1,6 +1,4 @@
-package pl.pjatk.jaz.dao;
-
-import pl.pjatk.jaz.entity.ProfileEntity;
+package pl.pjatk.jaz.user;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

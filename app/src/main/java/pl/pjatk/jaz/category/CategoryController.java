@@ -1,9 +1,6 @@
-package pl.pjatk.jaz.controller;
+package pl.pjatk.jaz.category;
 
 import pl.pjatk.jaz.ParamRetriever;
-import pl.pjatk.jaz.dao.CategoryDAO;
-import pl.pjatk.jaz.entity.CategoryEntity;
-import pl.pjatk.jaz.request.CategoryRequest;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

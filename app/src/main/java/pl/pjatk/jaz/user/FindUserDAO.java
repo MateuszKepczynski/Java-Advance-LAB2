@@ -1,4 +1,4 @@
-package pl.pjatk.jaz.dao;
+package pl.pjatk.jaz.user;
 
 public interface FindUserDAO
 {
