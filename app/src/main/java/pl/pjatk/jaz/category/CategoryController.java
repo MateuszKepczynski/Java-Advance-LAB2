@@ -1,6 +1,7 @@
 package pl.pjatk.jaz.category;
 
 import pl.pjatk.jaz.ParamRetriever;
+import pl.pjatk.jaz.session.SessionUtils;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -46,16 +47,32 @@ public class CategoryController
 
     public String save()
     {
-        var category = new CategoryEntity(categoryRequest.getId(), categoryRequest.getName(), categoryRequest.getDescription());
-        category.setSectionId(categoryRequest.getSectionId());
-        categoryDAO.save(category);
-        return "/list-category.xhtml?faces-redirect=true";
+        String session = SessionUtils.getUserName();
+        if(session.equals("kepes12"))
+        {
+            var category = new CategoryEntity(categoryRequest.getId(), categoryRequest.getName(), categoryRequest.getDescription());
+            category.setSectionId(categoryRequest.getSectionId());
+            categoryDAO.save(category);
+            return "/list-category.xhtml?faces-redirect=true";
+        }
+        else
+        {
+            return "/index.xhtml?faces-redirect=true";
+        }
     }
 
     public String delete()
     {
-        var section = categoryDAO.getCategoryById(categoryRequest.getId()).get();
-        categoryDAO.delete(section);
-        return "/list-category.xhtml?faces-redirect=true";
+        String session = SessionUtils.getUserName();
+        if(session.equals("kepes12"))
+        {
+            var section = categoryDAO.getCategoryById(categoryRequest.getId()).get();
+            categoryDAO.delete(section);
+            return "/list-category.xhtml?faces-redirect=true";
+        }
+        else
+        {
+            return "/index.xhtml?faces-redirect=true";
+        }
     }
 }

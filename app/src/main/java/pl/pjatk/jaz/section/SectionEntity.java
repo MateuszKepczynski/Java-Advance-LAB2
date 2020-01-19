@@ -1,5 +1,7 @@
 package pl.pjatk.jaz.section;
 
+import pl.pjatk.jaz.category.CategoryEntity;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +15,10 @@ public class SectionEntity
 
     @Column(name = "name")
     private String name;
-    /*
-    @OneToOne(mappedBy="sectionEntity", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+
+  /*  @OneToMany(mappedBy="sectionEntity", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private CategoryEntity categoryEntity;
-*/
+  */
     public SectionEntity()
     {
         name = "";

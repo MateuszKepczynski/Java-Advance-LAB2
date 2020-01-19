@@ -1,6 +1,8 @@
 package pl.pjatk.jaz.section;
 
 import pl.pjatk.jaz.ParamRetriever;
+import pl.pjatk.jaz.session.SessionUtils;
+import pl.pjatk.jaz.user.FindUserDAO;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -12,6 +14,9 @@ import java.util.List;
 public class SectionController
 {
     private SectionRequest sectionRequest;
+
+    @Inject
+    FindUserDAO findUserDAO;
 
     @Inject
     SectionDAO sectionDAO;
@@ -46,15 +51,33 @@ public class SectionController
 
     public String save()
     {
-        var section = new SectionEntity(sectionRequest.getId(),sectionRequest.getName());
-        sectionDAO.save(section);
+        String session = SessionUtils.getUserName();
+        System.out.println("############# " + findUserDAO.getUserByUsername(session));
+        if(session.equals("kepes12"))
+        {
+            var section = new SectionEntity(sectionRequest.getId(), sectionRequest.getName());
+            sectionDAO.save(section);
 
-        return "/list-section.xhtml?faces-redirect=true";
+            return "/list-section.xhtml?faces-redirect=true";
+        }
+        else
+        {
+            return "/index.xhtml?faces-redirect=true";
+        }
     }
 
     public String delete(){
-        var section = new SectionEntity(sectionRequest.getId(),sectionRequest.getName());
-        sectionDAO.delete(section);
-        return "/list-section.xhtml?faces-redirect=true";
+        String session = SessionUtils.getUserName();
+        System.out.println("############# " + findUserDAO.getUserByUsername(session));
+        if(session.equals("kepes12"))
+        {
+            var section = new SectionEntity(sectionRequest.getId(), sectionRequest.getName());
+            sectionDAO.delete(section);
+            return "/list-section.xhtml?faces-redirect=true";
+        }
+        else
+        {
+            return "/index.xhtml?faces-redirect=true";
+        }
     }
 }

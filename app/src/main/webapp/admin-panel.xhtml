@@ -4,7 +4,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
     <title>Allezon</title>
@@ -13,6 +14,7 @@
 
 <h:body>
     <h:body style="background-image: url(resources/images/gifback.gif); background-position: top; background-repeat: repeat;  background-size: auto"></h:body>
+    <c:if test="#{session.getAttribute('username') == 'kepes12'}">
     <h:form>
         <div style="position: fixed; left: 40%;">
             <h:commandButton action="#{pageController.welcomeForm}" styleClass="topScreenButtons" value="STRONA GŁÓWNA"/>
@@ -30,6 +32,7 @@
         </div>
 
     </h:form>
+    </c:if>
 </h:body>
 
 </html>
