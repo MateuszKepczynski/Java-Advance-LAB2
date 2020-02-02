@@ -51,6 +51,16 @@ public class AuctionEntity
         this.photo = photo;
     }
 
+    public AuctionEntity(String title, double price, String description, Long profileId, Long categoryId, String photo, List<PhotoEntity> photoEntities){
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.profileId = profileId;
+        this.categoryId = categoryId;
+        this.photo = photo;
+        this.photoEntities = photoEntities;
+    }
+
     public Long getId() {
         return id;
     }
@@ -124,4 +134,19 @@ public class AuctionEntity
         photoEntities.add(pE);
     }
 
+    @Override
+    public String toString()
+    {
+        return "AuctionEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", profileId=" + profileId +
+                ", categoryId=" + categoryId +
+                ", photo='" + photo + '\'' +
+                ", photoEntities=" + photoEntities +
+                +
+                        '}';
+    }
 }

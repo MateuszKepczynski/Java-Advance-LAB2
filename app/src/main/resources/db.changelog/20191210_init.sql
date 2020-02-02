@@ -57,16 +57,12 @@ create table parameter
 (
     id  BIGSERIAL PRIMARY KEY,
     description varchar not null
-
-
 );
 
 create table auction_parameter
 (
     auction_id  BIGINT NOT NULL ,
     parameter_id  BIGINT NOT NULL ,
-    values varchar not null,
     FOREIGN KEY (auction_id) REFERENCES auction (id),
     foreign key (parameter_id) REFERENCES parameter (id)
-
 );

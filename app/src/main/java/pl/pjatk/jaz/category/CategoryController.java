@@ -1,6 +1,7 @@
 package pl.pjatk.jaz.category;
 
 import pl.pjatk.jaz.ParamRetriever;
+import pl.pjatk.jaz.section.SectionController;
 import pl.pjatk.jaz.session.SessionUtils;
 
 import javax.enterprise.context.RequestScoped;
@@ -74,5 +75,10 @@ public class CategoryController
         {
             return "/index.xhtml?faces-redirect=true";
         }
+    }
+
+    public void getIdFromSection(SectionController sectionController)
+    {
+
     }
 }

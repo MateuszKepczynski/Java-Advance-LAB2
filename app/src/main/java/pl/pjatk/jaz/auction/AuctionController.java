@@ -94,6 +94,8 @@ public class AuctionController
         auction.addPhoto(photo.get(0));
         auction.addPhoto(photo.get(1));
         auction.addPhoto(photo.get(2));
+
+
         auctionDAO.save(auction);
         return "/auction-form.xhtml?faces-redirect=true";
     }

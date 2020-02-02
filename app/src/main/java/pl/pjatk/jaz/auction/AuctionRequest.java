@@ -5,6 +5,7 @@ import pl.pjatk.jaz.photo.PhotoEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.util.Collection;
 import java.util.List;
 
 @Named
@@ -128,5 +129,23 @@ public class AuctionRequest
 
     public void setThirdPhoto(String thirdPhoto) {
         this.thirdPhoto = thirdPhoto;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return "AuctionRequest{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", profileId=" + profileId +
+                ", categoryId=" + categoryId +
+                ", photo='" + photo + '\'' +
+                ", photoTwo='" + photoTwo + '\'' +
+                ", thirdPhoto='" + thirdPhoto + '\'' +
+                ", photoEntity=" + photoEntity +
+                '}';
     }
 }
